@@ -1,4 +1,6 @@
 <script setup>
+import Products from './Products.vue'
+
 defineOptions({
   name: 'Home',
 })
@@ -57,6 +59,9 @@ defineOptions({
           <span class="text-gray-600">ارزان‌ترین</span>
           <span class="text-gray-600">گران‌ترین</span>
         </div>
+      </div>
+      <div class="products">
+        <Products />
       </div>
     </section>
   </main>

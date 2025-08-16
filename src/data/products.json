@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "image": "/public/images/productImage/06580a5c42994747a9408903ee070b73.jpg",
+    "title": "تاریخ ایران باستان",
+    "tag": ["تاریخی", "تاریخ ایران", "ادبیات ایران"],
+    "price": 780000,
+    "stock": 4
+  },
+  {
+    "id": 2,
+    "image": "/public/images/productImage/night-light.jpg",
+    "title": "کتاب شب‌های روشن",
+    "tag": ["رمان", "ادبیات جهان", "ادبیات روس"],
+    "price": 320000,
+    "stock": 2
+  },
+  {
+    "id": 3,
+    "image": "/public/images/productImage/theater.jpg",
+    "title": "تاریخ تئاتر ایران",
+    "tag": ["اجرا", "نمایشنامه", "تئاتر"],
+    "price": 460000,
+    "stock": 7
+  },
+  {
+    "id": 4,
+    "image": "/public/images/productImage/alboye.jpg",
+    "title": "ایران از اسلام تا آل بویه",
+    "tag": ["آل بویه", "ایران", "تاریخ ایران"],
+    "price": 570000,
+    "stock": 3
+  },
+  {
+    "id": 5,
+    "image": "/public/images/productImage/delbakhte.jpg",
+    "title": "دلباخته",
+    "tag": ["داستایوفسکی", "ادبیات روس", "تاریخ روس"],
+    "price": 250000,
+    "stock": 6
+  },
+  {
+    "id": 6,
+    "image": "/public/images/productImage/part.jpg",
+    "title": "تکه‌هایی از یک کل منسجم",
+    "tag": ["خودپروری", "رمان", "روانشناسی"],
+    "price": 362000,
+    "stock": 2
+  },
+  {
+    "id": 7,
+    "image": "/public/images/productImage/paradise.png",
+    "title": "یه قدم در بهشت",
+    "tag": ["ادبیات آمریکا", "رمان", "ادبیات معاصر"],
+    "price": 120000,
+    "stock": 1
+  },
+  {
+    "id": 8,
+    "image": "/public/images/productImage/karkas.jpg",
+    "title": "کرکس های بی کرک و پر",
+    "tag": ["داستان کوتاه", "ادبیات پرو"],
+    "price": 456000,
+    "stock": 9
+  },
+  {
+    "id": 9,
+    "image": "/public/images/productImage/eltehab.jpg",
+    "title": "التهاب مغز",
+    "tag": ["داستان کوتاه", "ادبیات کلاسیک"],
+    "price": 131560,
+    "stock": 5
+  },
+  {
+    "id": 10,
+    "image": "/public/images/productImage/story.jpg",
+    "title": "قصه‌های ادسا",
+    "tag": ["ادبیات معاصر", "ادبیات روسیه"],
+    "price": 253000,
+    "stock": 1
+  }
+]
