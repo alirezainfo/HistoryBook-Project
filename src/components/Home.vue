@@ -52,12 +52,12 @@ defineOptions({
     <section class="product-sec w-full">
       <div
         class="filter-price p-3 w-full border-1 rounded-xl border-gray-300"
-        style="background: linear-gradient(333.67deg, #f6f8fb 68%, #ebedf0 110.46%)"
+        style="background: linear-gradient(300.67deg, #f6f8fb -150%, #ebedf0 100.46%)"
       >
         <div class="flex gap-2">
-          <span class="font-bold text-gray-700">مرتب‌سازی :</span>
-          <span class="text-gray-600">ارزان‌ترین</span>
-          <span class="text-gray-600">گران‌ترین</span>
+          <span class="font-bold text-gray-700 p-2">مرتب‌سازی :</span>
+          <span class="text-gray-500 bg-white p-2 rounded-3xl">ارزان‌ترین</span>
+          <span class="text-gray-500 p-2">گران‌ترین</span>
         </div>
       </div>
       <div class="products">

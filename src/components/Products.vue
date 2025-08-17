@@ -7,7 +7,7 @@ defineOptions({
 </script>
 
 <template>
-  <section class="w-full mt-5 flex justify-right items-center flex-wrap gap-4">
+  <section class="w-full mt-5 flex justify-center items-center flex-wrap gap-5 mb-5">
     <product />
   </section>
 </template>
