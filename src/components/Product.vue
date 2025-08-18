@@ -1,27 +1,25 @@
 <script setup>
-import data from '../data/products.json'
+import { ref } from 'vue'
+import { useProductStore } from '@/stores/productStore'
+import { useToPersianStore } from '@/stores/topersiannumberStore'
 
 defineOptions({
   name: 'Product',
 })
 
-function toPersianNumber(value) {
-  // تبدیل عدد به رشته و اضافه کردن جداکننده هزارگان
-  const withCommas = Number(value).toLocaleString('fa-IR')
+const productStore = useProductStore()
+const productData = productStore.productData
 
-  // جایگزینی اعداد انگلیسی با فارسی (برای محیط‌هایی که toLocaleString فارسی نمی‌دهد)
-  const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹']
-  return withCommas.toString().replace(/\d/g, (d) => persianDigits[d])
-}
+const toPersianNumber = useToPersianStore()
 </script>
 
 <template>
   <div
-    v-for="product in data"
+    v-for="product in productData"
     :key="product.id"
     class="bg-white w-[200px] h-[450px] rounded-xl p-2 shadow-sm hover:shadow-xl"
   >
-    <div class="img-wrapper h-5/10">
+    <div class="img-wrapper h-6/12">
       <img class="w-full h-full rounded-xl object-fit" :src="product.image" alt="" />
     </div>
     <p class="product-name font-semibold mt-2 text-gray-600">{{ product.title }}</p>
@@ -53,13 +51,17 @@ function toPersianNumber(value) {
           <path d="m3.3 7 8.7 5 8.7-5" />
           <path d="M12 22V12" />
         </svg>
-        <span class="stock text-xs text-white">{{ toPersianNumber(product.stock) }}</span>
+        <span class="stock text-xs text-white">{{
+          toPersianNumber.toPersianNumber(product.stock)
+        }}</span>
       </div>
       <p class="product-price text-left font-bold text-gray-600">
-        {{ toPersianNumber(product.price) }} <span class="text-sm text-gray-500">تومان</span>
+        {{ toPersianNumber.toPersianNumber(product.price) }}
+        <span class="text-sm text-gray-500">تومان</span>
       </p>
     </div>
     <button
+      @click="productStore.addToCart(product.id)"
       class="text-sm border-1 w-full mt-3 p-2 rounded-lg text-blue-700 hover:bg-blue-700 hover:text-white"
     >
       افزودن به سبد خرید

@@ -56,8 +56,8 @@ defineOptions({
       >
         <div class="flex gap-2">
           <span class="font-bold text-gray-700 p-2">مرتب‌سازی :</span>
-          <span class="text-gray-500 bg-white p-2 rounded-3xl">ارزان‌ترین</span>
-          <span class="text-gray-500 p-2">گران‌ترین</span>
+          <span class="text-gray-500 bg-white p-2 rounded-lg">ارزان‌ترین</span>
+          <span class="text-gray-500 p-2 lg">گران‌ترین</span>
         </div>
       </div>
       <div class="products">

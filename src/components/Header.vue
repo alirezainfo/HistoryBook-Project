@@ -1,4 +1,10 @@
 <script setup>
+import { useProductStore } from '@/stores/productStore'
+import { useToPersianStore } from '@/stores/topersiannumberStore'
+
+const productStore = useProductStore()
+const toPersianNumber = useToPersianStore()
+
 defineOptions({
   name: 'Header',
 })
@@ -46,7 +52,9 @@ defineOptions({
             /></svg
         ></a>
         <p>سبد خرید</p>
-        <span class="py-1 px-3 h-fit bg-white rounded-full mr-3 leading-6">۰</span>
+        <span class="py-1 px-3 h-fit bg-white text-red-600 rounded-full mr-3 leading-6">{{
+          toPersianNumber.toPersianNumber(productStore.cartStock)
+        }}</span>
       </div>
     </div>
   </header>
