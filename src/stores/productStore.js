@@ -10,6 +10,7 @@ export const useProductStore = defineStore('product', () => {
 
   function addToCart(productId) {
     const product = productData.value.find((p) => p.id === productId)
+    product.isAdded = true
 
     if (product && product.stock > 0) {
       cartStock.value += 1
@@ -30,7 +31,7 @@ export const useProductStore = defineStore('product', () => {
   // productData.value.forEach((product) => {
   //   if (product.id === productId && product.stock > 0) {
   //     product.stock -= 1
-  //     cartStock.value += 1
+  //     cartSto ck.value += 1
   //   }
   // })
 

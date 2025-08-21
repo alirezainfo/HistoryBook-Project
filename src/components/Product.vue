@@ -9,7 +9,6 @@ defineOptions({
 
 const productStore = useProductStore()
 const productData = productStore.productData
-
 const toPersianNumber = useToPersianStore()
 </script>
 
@@ -43,7 +42,7 @@ const toPersianNumber = useToPersianStore()
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="lucide lucide-box-icon lucide-box text-white"
+          class="lucide lucide-box-icon lucide-box text-white ml-[1px]"
         >
           <path
             d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"
@@ -51,7 +50,7 @@ const toPersianNumber = useToPersianStore()
           <path d="m3.3 7 8.7 5 8.7-5" />
           <path d="M12 22V12" />
         </svg>
-        <span class="stock text-xs text-white">{{
+        <span class="stock text-xs w-2 text-white">{{
           toPersianNumber.toPersianNumber(product.stock)
         }}</span>
       </div>
@@ -62,9 +61,13 @@ const toPersianNumber = useToPersianStore()
     </div>
     <button
       @click="productStore.addToCart(product.id)"
-      class="text-sm border-1 w-full mt-3 p-2 rounded-lg text-blue-700 hover:bg-blue-700 hover:text-white"
+      :class="
+        product.isAdded
+          ? 'text-xs border-1 w-full mt-3 p-2 rounded-lg bg-blue-700 text-white'
+          : 'text-sm border-1 w-full mt-3 p-2 rounded-lg text-blue-700 hover:bg-blue-700 hover:text-white'
+      "
     >
-      افزودن به سبد خرید
+      {{ product.isAdded ? 'محصول به سبد خرید اضافه شد.' : 'افزودن به سبد خرید' }}
     </button>
   </div>
 </template>
