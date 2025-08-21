@@ -17,9 +17,9 @@ const toPersianNumber = useToPersianStore()
   <div
     v-for="product in productData"
     :key="product.id"
-    class="bg-white w-[200px] h-[450px] rounded-xl p-2 shadow-sm hover:shadow-xl"
+    class="bg-white w-[200px] flex flex-col rounded-xl p-2 shadow-sm hover:shadow-xl"
   >
-    <div class="img-wrapper h-6/12">
+    <div class="img-wrapper h-60">
       <img class="w-full h-full rounded-xl object-fit" :src="product.image" alt="" />
     </div>
     <p class="product-name font-semibold mt-2 text-gray-600">{{ product.title }}</p>
