@@ -6,7 +6,6 @@ import { useToPersianStore } from '@/stores/topersiannumberStore'
 defineOptions({
   name: 'Product',
 })
-
 const productStore = useProductStore()
 const productData = productStore.productData
 const toPersianNumber = useToPersianStore()
@@ -26,7 +25,7 @@ const toPersianNumber = useToPersianStore()
       <span
         v-for="(tag, index) in product.tag"
         :key="index"
-        class="p-2 bg-gray-100 rounded-lg text-gray-500 text-sm"
+        class="p-2 bg-gray-100 rounded-lg text-gray-500 text-xs"
         >{{ tag }}</span
       >
     </div>
@@ -61,9 +60,10 @@ const toPersianNumber = useToPersianStore()
     </div>
     <button
       @click="productStore.addToCart(product.id)"
+      :disabled="product.isAdded"
       :class="
         product.isAdded
-          ? 'text-xs border-1 w-full mt-3 p-2 rounded-lg bg-blue-700 text-white'
+          ? 'text-xs border-1 w-full mt-3 px-2 h-[37px] rounded-lg cursor-not-allowed bg-blue-600 text-white opacity-50'
           : 'text-sm border-1 w-full mt-3 p-2 rounded-lg text-blue-700 hover:bg-blue-700 hover:text-white'
       "
     >

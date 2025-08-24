@@ -8,21 +8,50 @@ const toPersianNumber = useToPersianStore()
 </script>
 
 <template>
-  <div class="container mx-auto px-15 my-15">
-    <div class="flex flex-wrap gap-6">
+  <div class="container mx-auto px-15 my-10">
+    <div
+      class="flex justify-center gap-2 w-full items-end px-10 py-5 bg-white border border-white rounded-t-xl"
+    >
+      <p class="font-bold text-gray-600 text-lg">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-shopping-basket-icon lucide-shopping-basket text-red-500"
+        >
+          <path d="m15 11-1 9" />
+          <path d="m19 11-4-7" />
+          <path d="M2 11h20" />
+          <path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4" />
+          <path d="M4.5 15.5h15" />
+          <path d="m5 11 4-7" />
+          <path d="m9 11 1 9" />
+        </svg>
+      </p>
+      <p class="font-bold text-gray-600 text-xl">سبد خرید</p>
+    </div>
+    <hr class="text-gray-300" />
+
+    <div class="flex flex-wrap gap-6 bg-white pt-5 px-5 justify-center">
       <section
         v-for="product in productStore.cartItems"
-        :key="product.id"
-        class="w-[230px] bg-white p-4 rounded-lg shadow-md flex flex-col"
+        :key="product.product.id"
+        class="w-[230px] bg-white p-4 rounded-lg shadow-xl flex flex-col"
       >
         <div class="w-full h-60 mb-4">
-          <img :src="product.image" alt="" class="w-full h-full object-fill rounded-lg" />
+          <img :src="product.product.image" alt="" class="w-80 h-full object-fill rounded-lg" />
         </div>
         <div class="flex flex-col justify-between flex-1">
-          <p class="font-semibold text-lg text-gray-600">{{ product.title }}</p>
+          <p class="font-semibold text-lg text-gray-600">{{ product.product.title }}</p>
           <p class="text-red-500 mt-5 flex justify-right gap-1">
             <span class="text-gray-500"> قیمت:</span>
-            {{ toPersianNumber.toPersianNumber(product.price) }}
+            {{ toPersianNumber.toPersianNumber(product.product.price) }}
             <span class="inline mx-1"
               ><svg style="width: 18px; height: 18px; fill: var(--color-icon-high-emphasis)">
                 <use xlink:href="#toman">
@@ -37,11 +66,15 @@ const toPersianNumber = useToPersianStore()
             ></span>
           </p>
           <p class="text-gray-500 mt-1">
-            موجودی: {{ toPersianNumber.toPersianNumber(product.stock) }}
+            موجودی: {{ toPersianNumber.toPersianNumber(product.product.stock) }}
           </p>
-          <Counter v-model="product.quantity" :product="product" :min="1" />
+          <Counter v-model="product.quantity" :product="product.product" :min="1" />
         </div>
       </section>
+    </div>
+    <div class="flex justify-between items-center bg-white py-10 px-10">
+      <p class="">جمع کل</p>
+      <button class="border border-blue-600 px-3 py-2 rounded-3xl">پرداخت</button>
     </div>
   </div>
 </template>

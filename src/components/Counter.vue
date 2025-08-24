@@ -45,11 +45,12 @@ function Decrement() {
 
 function Deleted() {
   const productDeleteIndex = productStore.cartItems.findIndex((p) => p.id === props.product.id)
-  const productDelete = productStore.cartItems.find((p) => p.id === props.product.id)
+  const productDelete = productStore.cartItems.find((p) => p.product.id === props.product.id)
+  props.product.isAdded = false
   productStore.cartItems.splice(productDeleteIndex, 1)
   productStore.cartStock -= 1
-
-  props.product.stock += productDelete.quantity || 1
+  props.product.stock += productDelete.quantity
+  productStore.showToast('محصول از سبد خرید حذف شد.', 'info')
 }
 </script>
 
@@ -103,7 +104,7 @@ function Deleted() {
         viewBox="0 0 24 24"
         stroke-width="1.5"
         stroke="currentColor"
-        class="h-6 w-6 text-red-600"
+        class="h-6 w-6 text-red-600 cursor-pointer"
       >
         <path
           stroke-linecap="round"
