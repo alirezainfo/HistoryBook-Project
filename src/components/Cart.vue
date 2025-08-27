@@ -2,9 +2,17 @@
 import { useProductStore } from '@/stores/productStore'
 import { useToPersianStore } from '@/stores/topersiannumberStore'
 import Counter from './Counter.vue'
+import { computed } from 'vue'
 
 const productStore = useProductStore()
 const toPersianNumber = useToPersianStore()
+
+const totalPriceForProduct = computed(() =>
+  productStore.cartItems.reduce(
+    (sum, product) => (sum += product.quantity * product.product.price),
+    0,
+  ),
+)
 </script>
 
 <template>
@@ -69,7 +77,13 @@ const toPersianNumber = useToPersianStore()
     </div>
 
     <div class="flex justify-between items-center bg-white py-10 px-10">
-      <p class="font-bold text-lg text-gray-800">جمع کل:</p>
+      <div class="flex justify-center gap-2 items-center">
+        <p class="font-bold text-lg text-gray-800">جمع کل:</p>
+        <span class="font-bold text-xl text-red-600">{{
+          toPersianNumber.toPersianNumber(totalPriceForProduct)
+        }}</span
+        ><span class="text-gray-700 font-semibold">تومان</span>
+      </div>
       <button
         class="border bg-blue-600 text-white px-3 py-2 rounded-lg hover:text-blue-600 hover:bg-white"
       >
