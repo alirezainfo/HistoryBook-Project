@@ -43,6 +43,12 @@ body {
   height: 0;
 }
 
+#swal2-title {
+  width: 270px;
+}
+.swal2-container {
+  width: 410px !important;
+}
 .slider {
   position: absolute;
   cursor: pointer;

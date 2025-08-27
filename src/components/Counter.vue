@@ -44,7 +44,9 @@ function Decrement() {
 }
 
 function Deleted() {
-  const productDeleteIndex = productStore.cartItems.findIndex((p) => p.id === props.product.id)
+  const productDeleteIndex = productStore.cartItems.findIndex(
+    (p) => p.product.id === props.product.id,
+  )
   const productDelete = productStore.cartItems.find((p) => p.product.id === props.product.id)
   props.product.isAdded = false
   productStore.cartItems.splice(productDeleteIndex, 1)

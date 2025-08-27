@@ -13,6 +13,25 @@ const totalPriceForProduct = computed(() =>
     0,
   ),
 )
+
+function deletedAll() {
+  productStore.cartStock = 0
+
+  productStore.productData.forEach((p) => {
+    const productInCart = productStore.cartItems.find((item) => item.product.id === p.id)
+
+    if (productInCart) {
+      p.stock += productInCart.quantity
+    }
+
+    p.isAdded = false
+    p.quantity = 0
+  })
+  if (productStore.cartItems.length > 0) {
+    productStore.showToast('همه محصولات از سبد خرید حذف شدند.', 'warning')
+  }
+  productStore.cartItems = []
+}
 </script>
 
 <template>
@@ -84,11 +103,19 @@ const totalPriceForProduct = computed(() =>
         }}</span
         ><span class="text-gray-700 font-semibold">تومان</span>
       </div>
-      <button
-        class="border bg-blue-600 text-white px-3 py-2 rounded-lg hover:text-blue-600 hover:bg-white"
-      >
-        پرداخت
-      </button>
+      <div class="flex justify-center items-center gap-2">
+        <button
+          @click="deletedAll"
+          class="border bg-red-600 text-white px-3 py-2 rounded-lg hover:text-red-600 hover:bg-white"
+        >
+          حذف همه
+        </button>
+        <button
+          class="border bg-blue-600 text-white px-3 py-2 rounded-lg hover:text-blue-600 hover:bg-white"
+        >
+          پرداخت
+        </button>
+      </div>
     </div>
   </div>
 </template>
