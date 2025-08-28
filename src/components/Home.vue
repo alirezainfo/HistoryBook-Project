@@ -4,6 +4,10 @@ import Products from './Products.vue'
 defineOptions({
   name: 'Home',
 })
+
+import { useSortStore } from '@/stores/sortStore'
+
+const sortStore = useSortStore()
 </script>
 
 <template>
@@ -56,8 +60,24 @@ defineOptions({
       >
         <div class="flex gap-2">
           <span class="font-bold text-gray-700 p-2">مرتب‌سازی :</span>
-          <span class="text-gray-500 bg-white p-2 rounded-lg">ارزان‌ترین</span>
-          <span class="text-gray-500 p-2 lg">گران‌ترین</span>
+          <button
+            @click="sortStore.setSort('asc')"
+            :class="[
+              'p-2 rounded-lg cursor-pointer text-gray-500',
+              sortStore.sortby === 'asc' ? 'bg-white' : '',
+            ]"
+          >
+            ارزان‌ترین
+          </button>
+          <button
+            @click="sortStore.setSort('desc')"
+            :class="[
+              'p-2 rounded-lg cursor-pointer text-gray-500',
+              sortStore.sortby === 'desc' ? 'bg-white' : '',
+            ]"
+          >
+            گران‌ترین
+          </button>
         </div>
       </div>
       <div class="products">

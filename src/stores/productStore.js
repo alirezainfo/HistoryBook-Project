@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import data from '../data/products.json'
 import Swal from 'sweetalert2'
+import { useSortStore } from './sortStore'
 
 export const useProductStore = defineStore('product', () => {
   const productData = ref(data)
@@ -9,6 +10,19 @@ export const useProductStore = defineStore('product', () => {
   const cartItems = ref([])
   const counter = ref(0)
   const isDisabled = ref(false)
+
+  const sortStore = useSortStore()
+
+  const filteredAndSortedProducts = computed(() => {
+    let products = [...productData.value]
+
+    if (sortStore.sortby === 'asc') {
+      products.sort((a, b) => a.price - b.price)
+    } else if (sortStore.sortby === 'desc') {
+      products.sort((a, b) => b.price - a.price)
+    }
+    return products
+  })
 
   function showToast(title, icon) {
     Swal.mixin({
@@ -62,5 +76,13 @@ export const useProductStore = defineStore('product', () => {
   //   }
   // })
 
-  return { showToast, counter, cartItems, productData, addToCart, cartStock }
+  return {
+    filteredAndSortedProducts,
+    showToast,
+    counter,
+    cartItems,
+    productData,
+    addToCart,
+    cartStock,
+  }
 })

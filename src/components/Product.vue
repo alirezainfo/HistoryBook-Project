@@ -7,13 +7,12 @@ defineOptions({
   name: 'Product',
 })
 const productStore = useProductStore()
-const productData = productStore.productData
 const toPersianNumber = useToPersianStore()
 </script>
 
 <template>
   <div
-    v-for="product in productData"
+    v-for="product in productStore.filteredAndSortedProducts"
     :key="product.id"
     class="bg-white w-[200px] flex flex-col rounded-xl p-2 shadow-sm hover:shadow-xl"
   >
