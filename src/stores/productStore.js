@@ -31,25 +31,29 @@ export const useProductStore = defineStore('product', () => {
   // }
 
   function addToCart(productId) {
-    showToast('محصول به سبد خرید اضافه شد.', 'success')
-    isDisabled.value = true
     const product = productData.value.find((p) => p.id === productId)
-    if (product && product.stock > 0) {
-      cartStock.value += 1
-      product.stock -= 1
-    }
+    if (product.stock > 0) {
+      showToast('محصول به سبد خرید اضافه شد.', 'success')
+      isDisabled.value = true
+      if (product && product.stock > 0) {
+        cartStock.value += 1
+        product.stock -= 1
+      }
 
-    const cartItem = cartItems.value.find((item) => item.id == productId)
+      const cartItem = cartItems.value.find((item) => item.id == productId)
 
-    if (cartItem) {
-      cartItem.quantity += 1
+      if (cartItem) {
+        cartItem.quantity += 1
+      } else {
+        cartItems.value.push({
+          product,
+          quantity: 1,
+        })
+      }
+      product.isAdded = true
     } else {
-      cartItems.value.push({
-        product,
-        quantity: 1,
-      })
+      showToast('محصول در انبار موجود نیست.', 'error')
     }
-    product.isAdded = true
   }
   // productData.value.forEach((product) => {
   //   if (product.id === productId && product.stock > 0) {
