@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue'
 import { useProductStore } from '@/stores/productStore'
 import { useToPersianStore } from '@/stores/topersiannumberStore'
 
@@ -8,6 +7,11 @@ defineOptions({
 })
 const productStore = useProductStore()
 const toPersianNumber = useToPersianStore()
+
+function tagFilter(tag) {
+  productStore.tagFilters.push(tag)
+  console.log(productStore.tagFilters)
+}
 </script>
 
 <template>
@@ -24,7 +28,8 @@ const toPersianNumber = useToPersianStore()
       <span
         v-for="(tag, index) in product.tag"
         :key="index"
-        class="p-2 bg-gray-100 rounded-lg text-gray-500 text-xs"
+        @click="tagFilter(tag)"
+        class="p-2 bg-gray-100 rounded-lg text-gray-500 text-xs cursor-pointer"
         >{{ tag }}</span
       >
     </div>

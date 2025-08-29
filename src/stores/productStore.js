@@ -11,6 +11,7 @@ export const useProductStore = defineStore('product', () => {
   const counter = ref(0)
   const isDisabled = ref(false)
   const isChecked = ref(false)
+  const tagFilters = ref([])
 
   const sortStore = useSortStore()
 
@@ -26,6 +27,11 @@ export const useProductStore = defineStore('product', () => {
     if (isChecked.value === true) {
       products = products.filter((p) => p.stock > 0)
     }
+
+    if (tagFilters.value.length > 0) {
+      products = products.filter((p) => tagFilters.value.every((t) => p.tag.includes(t)))
+    }
+
     return products
   })
 
@@ -41,13 +47,6 @@ export const useProductStore = defineStore('product', () => {
       title: title,
     })
   }
-
-  // function showAlert() {
-  //   Toast.fire({
-  //     icon: 'success',
-  //     title: 'محصول به سبد خرید اضافه شد.',
-  //   })
-  // }
 
   function addToCart(productId) {
     const product = productData.value.find((p) => p.id === productId)
@@ -74,12 +73,6 @@ export const useProductStore = defineStore('product', () => {
       showToast('محصول در انبار موجود نیست.', 'error')
     }
   }
-  // productData.value.forEach((product) => {
-  //   if (product.id === productId && product.stock > 0) {
-  //     product.stock -= 1
-  //     cartSto ck.value += 1
-  //   }
-  // })
 
   return {
     filteredAndSortedProducts,
@@ -90,5 +83,6 @@ export const useProductStore = defineStore('product', () => {
     addToCart,
     cartStock,
     isChecked,
+    tagFilters,
   }
 })
