@@ -10,6 +10,7 @@ export const useProductStore = defineStore('product', () => {
   const cartItems = ref([])
   const counter = ref(0)
   const isDisabled = ref(false)
+  const isChecked = ref(false)
 
   const sortStore = useSortStore()
 
@@ -20,6 +21,10 @@ export const useProductStore = defineStore('product', () => {
       products.sort((a, b) => a.price - b.price)
     } else if (sortStore.sortby === 'desc') {
       products.sort((a, b) => b.price - a.price)
+    }
+
+    if (isChecked.value === true) {
+      products = products.filter((p) => p.stock > 0)
     }
     return products
   })
@@ -84,5 +89,6 @@ export const useProductStore = defineStore('product', () => {
     productData,
     addToCart,
     cartStock,
+    isChecked,
   }
 })

@@ -1,13 +1,14 @@
 <script setup>
 import Products from './Products.vue'
+import { useSortStore } from '@/stores/sortStore'
+import { useProductStore } from '@/stores/productStore'
 
 defineOptions({
   name: 'Home',
 })
 
-import { useSortStore } from '@/stores/sortStore'
-
 const sortStore = useSortStore()
+const productStore = useProductStore()
 </script>
 
 <template>
@@ -23,7 +24,7 @@ const sortStore = useSortStore()
         <div class="px-1 flex justify-between items-center">
           <span class="text-xs">فقط کالاهای موجود</span>
           <label class="switch">
-            <input type="checkbox" checked />
+            <input type="checkbox" v-model="productStore.isChecked" />
             <span class="slider round"></span>
           </label>
         </div>
