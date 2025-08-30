@@ -27,6 +27,7 @@ defineOptions({
           class="w-[500px] rounded-md p-3 outline-0 text-gray-700 text-sm"
           style="background: linear-gradient(333.67deg, #f6f8fb 68%, #ebedf0 110.46%)"
           type="text"
+          v-model="productStore.searchQuery"
           placeholder="محصول خود را جستجو کنید..."
         />
       </div>

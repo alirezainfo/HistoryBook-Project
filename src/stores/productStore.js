@@ -11,6 +11,7 @@ export const useProductStore = defineStore('product', () => {
   const counter = ref(0)
   const isDisabled = ref(false)
   const isChecked = ref(false)
+  const searchQuery = ref('')
   const tagFilters = ref([])
 
   const sortStore = useSortStore()
@@ -30,6 +31,12 @@ export const useProductStore = defineStore('product', () => {
 
     if (tagFilters.value.length > 0) {
       products = products.filter((p) => tagFilters.value.every((t) => p.tag.includes(t)))
+    }
+
+    if (searchQuery.value.trim() !== '') {
+      products = products.filter((p) =>
+        p.title.toLowerCase().includes(searchQuery.value.toLowerCase()),
+      )
     }
 
     return products
@@ -84,5 +91,6 @@ export const useProductStore = defineStore('product', () => {
     cartStock,
     isChecked,
     tagFilters,
+    searchQuery,
   }
 })

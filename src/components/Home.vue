@@ -3,14 +3,19 @@ import { ref } from 'vue'
 import Products from './Products.vue'
 import { useSortStore } from '@/stores/sortStore'
 import { useProductStore } from '@/stores/productStore'
+import { useToPersianStore } from '@/stores/topersiannumberStore'
 
 defineOptions({
   name: 'Home',
 })
 const sortStore = useSortStore()
 const productStore = useProductStore()
+const toPersianNumber = useToPersianStore()
 
 const tagSearch = ref('')
+
+const minPrice = ref(0)
+const maxPrice = ref(10000)
 
 function deleteFilterTag(tag) {
   productStore.tagFilters = productStore.tagFilters.filter((t) => t !== tag)
@@ -74,26 +79,35 @@ function tagSearchFunc() {
           </label>
         </div>
         <hr class="my-4 text-gray-300" />
-        <div class="flex justify-center items-center flex-col">
+        <div class="flex justify-center items-center flex-col w-full">
           <p class="text-sm font-semibold">فیلتر قیمت</p>
-          <div class="flex justify-between items-center flex-row mt-5 w-full">
-            <span class="text-sm">از</span>
+          <div class="flex justify-between items-center flex-col mt-5 w-full p-1">
+            <div class="flex justify-between items-center w-full">
+              <p class="text-sm font-semibold text-right text-gray-700">حداقل قیمت:</p>
+              <p class="text-gray-700">10000<span class="text-sm mr-1">تومان</span></p>
+            </div>
             <input
-              class="bg-gray-100 text-xs p-2 rounded-sm outline-0 w-7/8"
-              type="text"
-              placeholder="0"
+              class="w-full mt-2"
+              type="range"
+              v-model="minPrice"
+              min="0"
+              max="10000"
+              step="100"
             />
           </div>
-          <div class="mt-5 flex justify-center items-center flex-col w-full">
-            <div class="flex justify-evenly items-center flex-row w-full gap-2">
-              <span class="text-sm">تا</span>
-              <input
-                class="bg-gray-100 text-xs p-2 rounded-sm outline-0 w-full"
-                type="text"
-                placeholder="0"
-              />
-              <span class="text-sm">تومان</span>
+          <div class="flex justify-between items-center flex-col mt-5 w-full p-1">
+            <div class="flex justify-between items-center w-full">
+              <p class="text-sm font-semibold text-right text-gray-700">حداکثر قیمت:</p>
+              <p class="text-gray-700">10000<span class="text-sm mr-1">تومان</span></p>
             </div>
+            <input
+              class="w-full mt-2"
+              type="range"
+              v-model="maxPrice"
+              min="0"
+              max="10000"
+              step="100"
+            />
           </div>
         </div>
       </div>
