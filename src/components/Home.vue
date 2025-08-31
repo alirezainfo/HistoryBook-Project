@@ -14,9 +14,6 @@ const toPersianNumber = useToPersianStore()
 
 const tagSearch = ref('')
 
-const minPrice = ref(0)
-const maxPrice = ref(10000)
-
 function deleteFilterTag(tag) {
   productStore.tagFilters = productStore.tagFilters.filter((t) => t !== tag)
 }
@@ -80,33 +77,39 @@ function tagSearchFunc() {
         </div>
         <hr class="my-4 text-gray-300" />
         <div class="flex justify-center items-center flex-col w-full">
-          <p class="text-sm font-semibold">فیلتر قیمت</p>
+          <p class="text-lg text-gray-600 mt-2 font-semibold">فیلتر قیمت</p>
           <div class="flex justify-between items-center flex-col mt-5 w-full p-1">
             <div class="flex justify-between items-center w-full">
               <p class="text-sm font-semibold text-right text-gray-700">حداقل قیمت:</p>
-              <p class="text-gray-700">10000<span class="text-sm mr-1">تومان</span></p>
+              <p class="text-gray-700">
+                {{ toPersianNumber.toPersianNumber(productStore.minPrice)
+                }}<span class="text-sm mr-1">تومان</span>
+              </p>
             </div>
             <input
               class="w-full mt-2"
               type="range"
-              v-model="minPrice"
+              v-model="productStore.minPrice"
               min="0"
-              max="10000"
-              step="100"
+              max="10000000"
+              step="10"
             />
           </div>
           <div class="flex justify-between items-center flex-col mt-5 w-full p-1">
             <div class="flex justify-between items-center w-full">
               <p class="text-sm font-semibold text-right text-gray-700">حداکثر قیمت:</p>
-              <p class="text-gray-700">10000<span class="text-sm mr-1">تومان</span></p>
+              <p class="text-gray-700">
+                {{ toPersianNumber.toPersianNumber(productStore.maxPrice)
+                }}<span class="text-sm mr-1">تومان</span>
+              </p>
             </div>
             <input
               class="w-full mt-2"
               type="range"
-              v-model="maxPrice"
+              v-model="productStore.maxPrice"
               min="0"
-              max="10000"
-              step="100"
+              max="10000000"
+              step="10"
             />
           </div>
         </div>

@@ -13,6 +13,8 @@ export const useProductStore = defineStore('product', () => {
   const isChecked = ref(false)
   const searchQuery = ref('')
   const tagFilters = ref([])
+  const minPrice = ref(0)
+  const maxPrice = ref(10000000)
 
   const sortStore = useSortStore()
 
@@ -37,6 +39,10 @@ export const useProductStore = defineStore('product', () => {
       products = products.filter((p) =>
         p.title.toLowerCase().includes(searchQuery.value.toLowerCase()),
       )
+    }
+
+    if (minPrice.value > 0) {
+      products = products.filter((p) => p.price > minPrice.value && p.price < maxPrice.value)
     }
 
     return products
@@ -92,5 +98,7 @@ export const useProductStore = defineStore('product', () => {
     isChecked,
     tagFilters,
     searchQuery,
+    minPrice,
+    maxPrice,
   }
 })
