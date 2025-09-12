@@ -1,35 +1,44 @@
-# HistoryBook
+# 📖 HistoryBook
 
-This template should help get you started developing with Vue 3 in Vite.
+<h3>✨ Features</h3>
 
-## Recommended IDE Setup
+📦 Product Management – Load products from a JSON file and manage stock dynamically
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+🛍️ Shopping Cart – Add, remove, and track items with real-time updates
 
-## Customize configuration
+🔍 Search & Filters – Filter by tags, availability, and price range; search by product title
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+↕️ Sorting – Sort products by ascending or descending price
 
-## Project Setup
+🔔 Toast Notifications – Interactive alerts using SweetAlert2
 
-```sh
+🎨 Responsive UI – Styled with Tailwind CSS for a modern and adaptive design
+
+⚡ SPA with Vite – Fast development and optimized builds using Vite
+
+
+
+<h3>🛠️ Tech Stack </h3>
+
+Vue 3 – Frontend framework
+
+Pinia – State management
+
+Vite – Build tool & dev server
+
+Tailwind CSS – Utility-first CSS framework
+
+SweetAlert2 – Elegant toast and modal notifications
+
+<h3> 🚀 Installation </h3>
+
+Clone the repository
+git clone https://github.com/your-username/your-repo.git
+
+
+cd your-repo
+
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
