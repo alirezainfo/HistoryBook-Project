@@ -33,10 +33,10 @@ SweetAlert2 – Elegant toast and modal notifications
 <h3> 🚀 Installation </h3>
 
 Clone the repository
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/alirezainfo/HistoryBook-Project.git
 
 
-cd your-repo
+cd HISTORYBOOK
 
 npm install
 
