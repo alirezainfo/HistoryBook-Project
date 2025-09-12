@@ -1,6 +1,6 @@
 # 📖 HistoryBook
 
-![Alt text](Capture.jpg)
+![Alt text](Capture.JPG)
 
 
 <h3>✨ Features</h3>
