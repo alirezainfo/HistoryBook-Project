@@ -1,5 +1,8 @@
 # 📖 HistoryBook
 
+![Alt text](Capture.jpg)
+
+
 <h3>✨ Features</h3>
 
 📦 Product Management – Load products from a JSON file and manage stock dynamically
