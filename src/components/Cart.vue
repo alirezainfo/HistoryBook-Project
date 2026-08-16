@@ -35,22 +35,22 @@ function deletedAll() {
 </script>
 
 <template>
-  <div class="container mx-auto px-15 my-10">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-15 my-6 lg:my-10">
     <div
-      class="flex justify-center gap-2 w-full items-end px-10 py-5 bg-white border border-white rounded-t-xl"
+      class="flex justify-center gap-2 w-full items-end px-4 sm:px-10 py-4 sm:py-5 bg-white border border-white rounded-t-xl"
     >
       <p class="font-bold text-gray-600 text-lg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="30"
-          height="30"
+          width="26"
+          height="26"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="lucide lucide-shopping-basket-icon lucide-shopping-basket text-red-500"
+          class="lucide lucide-shopping-basket-icon lucide-shopping-basket text-red-500 sm:w-[30px] sm:h-[30px]"
         >
           <path d="m15 11-1 9" />
           <path d="m19 11-4-7" />
@@ -65,14 +65,16 @@ function deletedAll() {
     </div>
     <hr class="text-gray-300" />
 
-    <div class="flex flex-wrap gap-6 bg-white pt-5 px-5 justify-center">
+    <div
+      class="grid grid-cols-1 min-[400px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-white pt-5 px-3 sm:px-5 mb-5"
+    >
       <section
         v-for="product in productStore.cartItems"
         :key="product.product.id"
-        class="w-[230px] bg-white p-4 rounded-lg shadow-xl flex flex-col"
+        class="w-full bg-white p-4 rounded-lg shadow-xl flex flex-col"
       >
-        <div class="w-full h-60 mb-4">
-          <img :src="product.product.image" alt="" class="w-80 h-full object-fill rounded-lg" />
+        <div class="w-full h-36 sm:h-48 lg:h-60 mb-4">
+          <img :src="product.product.image" alt="" class="w-full h-full object-cover rounded-lg" />
         </div>
         <div class="flex flex-col justify-between flex-1">
           <p class="font-semibold text-lg text-gray-600">{{ product.product.title }}</p>
@@ -95,7 +97,9 @@ function deletedAll() {
       </section>
     </div>
 
-    <div class="flex justify-between items-center bg-white py-10 px-10">
+    <div
+      class="flex flex-col sm:flex-row justify-between items-center gap-4 bg-white py-6 sm:py-10 px-4 sm:px-10"
+    >
       <div class="flex justify-center gap-2 items-center">
         <p class="font-bold text-lg text-gray-800">جمع کل:</p>
         <span class="font-bold text-xl text-red-600">{{
@@ -103,15 +107,15 @@ function deletedAll() {
         }}</span
         ><span class="text-gray-700 font-semibold">تومان</span>
       </div>
-      <div class="flex justify-center items-center gap-2">
+      <div class="flex justify-center items-center gap-2 w-full sm:w-auto">
         <button
           @click="deletedAll"
-          class="border bg-red-600 text-white px-3 py-2 rounded-lg hover:text-red-600 hover:bg-white"
+          class="border bg-red-600 text-white px-3 py-2 rounded-lg hover:text-red-600 hover:bg-white flex-1 sm:flex-none"
         >
           حذف همه
         </button>
         <button
-          class="border bg-blue-600 text-white px-3 py-2 rounded-lg hover:text-blue-600 hover:bg-white"
+          class="border bg-blue-600 text-white px-3 py-2 rounded-lg hover:text-blue-600 hover:bg-white flex-1 sm:flex-none"
         >
           پرداخت
         </button>

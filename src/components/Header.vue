@@ -11,28 +11,23 @@ defineOptions({
 </script>
 
 <template>
-  <header class="container mx-auto px-15">
-    <div class="flex justify-between items-center shadow-xs px-4 pt-3 rounded-b-xl bg-white">
-      <div class="flex justify-center items-center">
-        <div class="w-[180px] h-[120px]">
-          <router-link to="/">
-            <img
-              class="object-cover w-full h-30"
-              src="/public/images/history-book-education-logo-design-concept-history-book-education-logo-design-concept-tree-book-creative-vector-279321333.webp"
-              alt=""
-            />
-          </router-link>
-        </div>
-        <input
-          class="w-[500px] rounded-md p-3 outline-0 text-gray-700 text-sm"
-          style="background: linear-gradient(333.67deg, #f6f8fb 68%, #ebedf0 110.46%)"
-          type="text"
-          v-model="productStore.searchQuery"
-          placeholder="محصول خود را جستجو کنید..."
-        />
+  <header class="container mx-auto px-4 sm:px-6 lg:px-15">
+    <div
+      class="flex flex-wrap sm:flex-nowrap justify-between items-center gap-3 shadow-xs px-4 py-3 rounded-b-xl bg-white"
+    >
+      <div
+        class="order-1 w-[140px] h-[90px] sm:w-[150px] sm:h-[100px] lg:w-[180px] lg:h-[120px] shrink-0"
+      >
+        <router-link to="/">
+          <img
+            class="object-cover w-full h-full"
+            src="/public/images/history-book-education-logo-design-concept-history-book-education-logo-design-concept-tree-book-creative-vector-279321333.webp"
+            alt=""
+          />
+        </router-link>
       </div>
 
-      <router-link to="/cart">
+      <router-link to="/cart" class="order-2 sm:order-3">
         <div
           class="flex justify-center items-center gap-1 py-2 px-2 rounded-lg"
           style="background: linear-gradient(333.67deg, #f6f8fb 68%, #ebedf0 110.46%)"
@@ -61,6 +56,14 @@ defineOptions({
           }}</span>
         </div>
       </router-link>
+
+      <input
+        class="order-3 sm:order-2 basis-full sm:basis-auto w-full sm:w-[220px] md:w-[320px] lg:w-[500px] rounded-md p-3 outline-0 text-gray-700 text-sm"
+        style="background: linear-gradient(333.67deg, #f6f8fb 68%, #ebedf0 110.46%)"
+        type="text"
+        v-model="productStore.searchQuery"
+        placeholder="محصول خود را جستجو کنید..."
+      />
     </div>
   </header>
 </template>
