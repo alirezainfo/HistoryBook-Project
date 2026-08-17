@@ -5,8 +5,15 @@ import { useToPersianStore } from '@/stores/topersiannumberStore'
 defineOptions({
   name: 'Product',
 })
+
 const productStore = useProductStore()
 const toPersianNumber = useToPersianStore()
+
+const baseUrl = import.meta.env.BASE_URL
+
+function getImageUrl(image) {
+  return `${baseUrl}${image.replace(/^\//, '')}`
+}
 
 function tagFilter(tag) {
   productStore.tagFilters.push(tag)
@@ -20,25 +27,40 @@ function tagFilter(tag) {
     :key="product.id"
     class="bg-white w-[200px] flex flex-col rounded-xl p-2 shadow-sm hover:shadow-xl"
   >
+    <!-- Product Image -->
     <div class="img-wrapper h-60">
       <img
         class="w-full h-full rounded-xl object-fit"
-        :src="`${import.meta.env.BASE_URL}${product.image.replace(/^\//, '')}`"
-        alt=""
+        :src="getImageUrl(product.image)"
+        :alt="product.title"
       />
     </div>
-    <p class="product-name font-semibold mt-2 text-gray-600">{{ product.title }}</p>
-    <div class="product-tags flex justify-right items-center gap-1.5 h-[78px] mt-3 flex-wrap">
+
+    <!-- Product Name -->
+    <p class="product-name font-semibold mt-2 text-gray-600">
+      {{ product.title }}
+    </p>
+
+    <!-- Product Tags -->
+    <div
+      class="product-tags flex justify-right items-center gap-1.5 h-[78px] mt-3 flex-wrap"
+    >
       <span
         v-for="(tag, index) in product.tag"
         :key="index"
         @click="tagFilter(tag)"
         class="p-2 bg-gray-100 rounded-lg text-gray-500 text-xs cursor-pointer"
-        >{{ tag }}</span
       >
+        {{ tag }}
+      </span>
     </div>
-    <div class="flex justify-between item-center flex-row mt-5">
-      <div class="flex justify-center items-center gap-1 bg-red-600 px-2 py-1 rounded-sm">
+
+    <!-- Stock & Price -->
+    <div class="flex justify-between items-center flex-row mt-5">
+      <!-- Stock -->
+      <div
+        class="flex justify-center items-center gap-1 bg-red-600 px-2 py-1 rounded-sm"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="14"
@@ -57,15 +79,20 @@ function tagFilter(tag) {
           <path d="m3.3 7 8.7 5 8.7-5" />
           <path d="M12 22V12" />
         </svg>
-        <span class="stock text-xs w-2 text-white">{{
-          toPersianNumber.toPersianNumber(product.stock)
-        }}</span>
+
+        <span class="stock text-xs w-2 text-white">
+          {{ toPersianNumber.toPersianNumber(product.stock) }}
+        </span>
       </div>
+
+      <!-- Price -->
       <p class="product-price text-left font-bold text-gray-600">
         {{ toPersianNumber.toPersianNumber(product.price) }}
         <span class="text-sm text-gray-500">تومان</span>
       </p>
     </div>
+
+    <!-- Add To Cart -->
     <button
       @click="productStore.addToCart(product.id)"
       :disabled="product.isAdded"
@@ -75,7 +102,11 @@ function tagFilter(tag) {
           : 'text-sm border-1 w-full mt-3 p-2 rounded-lg text-blue-700 hover:bg-blue-700 hover:text-white'
       "
     >
-      {{ product.isAdded ? 'محصول به سبد خرید اضافه شد.' : 'افزودن به سبد خرید' }}
+      {{
+        product.isAdded
+          ? 'محصول به سبد خرید اضافه شد.'
+          : 'افزودن به سبد خرید'
+      }}
     </button>
   </div>
 </template>
