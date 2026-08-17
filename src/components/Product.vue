@@ -21,7 +21,11 @@ function tagFilter(tag) {
     class="bg-white w-[200px] flex flex-col rounded-xl p-2 shadow-sm hover:shadow-xl"
   >
     <div class="img-wrapper h-60">
-      <img class="w-full h-full rounded-xl object-fit" :src="product.image" alt="" />
+      <img
+        class="w-full h-full rounded-xl object-fit"
+        :src="`${import.meta.env.BASE_URL}${product.image.replace(/^\//, '')}`"
+        alt=""
+      />
     </div>
     <p class="product-name font-semibold mt-2 text-gray-600">{{ product.title }}</p>
     <div class="product-tags flex justify-right items-center gap-1.5 h-[78px] mt-3 flex-wrap">
